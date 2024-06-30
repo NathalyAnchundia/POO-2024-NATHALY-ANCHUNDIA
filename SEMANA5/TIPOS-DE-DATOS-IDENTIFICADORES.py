@@ -1,50 +1,46 @@
-"""
-Este programa calcula el área de un círculo basado en el radio proporcionado por el usuario.
-Utiliza diferentes tipos de datos y sigue las convenciones de codificación.
-"""
+# Programa para gestionar información básica de empleados
+# Permite al usuario ingresar y mostrar datos como nombre, edad, salario y estado laboral.
 
-import math
-
-
-def calcular_area_circulo(radio):
+# Definición de una función para ingresar datos del empleado
+def ingresar_empleado():
     """
-    Calcula el área de un círculo dado su radio.
-
-    Parámetros:
-    radio (float): El radio del círculo.
-
-    Retorna:
-    float: El área del círculo.
+    Función para ingresar datos de un empleado.
+    Returns:
+        dict: Un diccionario con los datos ingresados del empleado.
     """
-    # Verifica que el radio sea positivo
-    if radio > 0:
-        area = math.pi * (radio ** 3)
-        return area
-    else:
-        return None
+    print("Ingrese los datos del empleado:")
+    nombre = input("Nombre:Juan Reyes ")
+    edad = int(input("Edad:28 "))
+    salario = float(input("Salario (en USD): 350"))
+    activo = input("¿Está activo? (Sí/No): si").lower() == 'sí'
 
+    empleado = {
+        'nombre': nombre,
+        'edad': edad,
+        'salario': salario,
+        'activo': activo
+    }
 
-def main():
-    # Solicita al usuario que ingrese el radio del círculo
-    radio_str = input("Introduce el radio del círculo: ")
+    return empleado
 
-    try:
-        # Convierte la entrada del usuario a un número de punto flotante
-        radio = float(radio_str)
+# Función para mostrar los datos del empleado
+def mostrar_empleado(empleado):
+    """
+    Función para mostrar los datos de un empleado.
+    Args:
+        empleado (dict): Diccionario con los datos del empleado a mostrar.
+    """
+    print("\nDatos del empleado:")
+    print(f"Nombre: {empleado['nombre']}")
+    print(f"Edad: {empleado['edad']} años")
+    print(f"Salario: ${empleado['salario']:.2f}")
+    estado = "Activo" if empleado['activo'] else "Inactivo"
+    print(f"Estado: {estado}")
 
-        # Llama a la función para calcular el área
-        area = calcular_area_circulo(radio)
+# Main code
+if __name__ == "__main__":
+    # Ingresar datos del empleado
+    empleado1 = ingresar_empleado()
 
-        # Verifica si el área es válida (no None)
-        if area is not None:
-            print(f"El área del círculo con radio {radio} es: {area:.2f}")
-        else:
-            print("El radio debe ser un número positivo.")
-
-    except ValueError:
-        print("Por favor, introduce un número válido.")
-
-
-# Punto de entrada del programa
-if __name__ == "_main_":
-    main()
+    # Mostrar los datos del empleado ingresado
+    mostrar_empleado(empleado1)
