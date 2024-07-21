@@ -1,6 +1,6 @@
 class Personaje:
 
-    def _init_(self, nombre, fuerza, inteligencia, defensa, vida):
+    def __init__(self, nombre, fuerza, inteligencia, defensa, vida):
         self.nombre = nombre
         self.fuerza = fuerza
         self.inteligencia = inteligencia
@@ -41,8 +41,8 @@ class Personaje:
 
 class Guerrero(Personaje):
 
-    def _init_(self, nombre, fuerza, inteligencia, defensa, vida, espada):
-        super()._init_(nombre, fuerza, inteligencia, defensa, vida)
+    def __init__(self, nombre, fuerza, inteligencia, defensa, vida, espada):
+        super().__init__(nombre, fuerza, inteligencia, defensa, vida)
         self.espada = espada
 
     def cambiar_arma(self):
@@ -64,8 +64,8 @@ class Guerrero(Personaje):
 
 class Mago(Personaje):
 
-    def _init_(self, nombre, fuerza, inteligencia, defensa, vida, libro):
-        super()._init_(nombre, fuerza, inteligencia, defensa, vida)
+    def __init__(self, nombre, fuerza, inteligencia, defensa, vida, libro):
+        super().__init__(nombre, fuerza, inteligencia, defensa, vida)
         self.libro = libro
 
     def atributos(self):
